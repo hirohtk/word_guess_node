@@ -11,9 +11,11 @@ var Letter = function(character) {
     this.toString = function () {
         if (this.correct) {
             console.log(character);
+            return character;
         }
         else {
-            console.log("_");
+             console.log("_");
+             return "_";
         }
     }
     this.check = function (inputArg) {

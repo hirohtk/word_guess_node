@@ -15,15 +15,19 @@ var Word = function(theWordItself) {
             let thisLetter = this.preLetterObjectArray[j];
             this.letterObjectArray.push(new Letter(thisLetter));
         }
-        console.log(this.letterObjectArray);
+        //console.log(this.letterObjectArray);
     };
     // this is supposed to draw the entire guess line with underscores and actual letters guessed.
     // will update every time a new letter is input (checks, then draws);
     this.fillIn = function () {
-        for (i = 0; i < this.letterArray.length; i++) {
+        //console.log(this.letterObjectArray);
+        for (i = 0; i < this.letterObjectArray.length; i++) {
+            //this.letterObjectArray[i].toString();
             
-            this.letterArray[i].toString();
-        }  
+            console.log(this.letterObjectArray[i].toString());
+            
+        }// still calling the object for some reason
+        
     }
 
     this.checkString = function(letterGuess) {
@@ -40,3 +44,4 @@ var cheetos = new Word("cheetos");
 
 cheetos.test();
 cheetos.letterArrayMaker();
+cheetos.fillIn();
