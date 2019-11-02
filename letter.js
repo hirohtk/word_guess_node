@@ -3,10 +3,10 @@
 
 //var actualLetter = "a";
 
-var Letter = function(character, input) {
+var Letter = function(character) {
     
     this.character = character;
-    this.input = input;
+    //this.input = input;
     this.correct = false;
     this.toString = function () {
         if (this.correct) {

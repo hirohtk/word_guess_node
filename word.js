@@ -9,10 +9,11 @@ var Word = function(theWordItself) {
     }
 
     //pushing new letter object for each of the letters that are gotten from the actual letter itself 
-    this.letterArrayMaker = function (character, input) {
+    this.letterArrayMaker = function () {
 
         for (j = 0; j < this.preLetterObjectArray.length; j++) {
-            this.letterObjectArray.push(new Letter(character, input));
+            let thisLetter = this.preLetterObjectArray[j];
+            this.letterObjectArray.push(new Letter(thisLetter));
         }
         console.log(this.letterObjectArray);
     };
@@ -38,3 +39,4 @@ var cheetos = new Word("cheetos");
 
 
 cheetos.test();
+cheetos.letterArrayMaker();
