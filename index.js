@@ -5,12 +5,13 @@ let guessCount;
 
 //wordToSolveArray holds your Word Constructors
 var wordToSolveArray = [];
-var words = ["cookie", "bacon", "pancake", "lima bean", "toast", "feta cheese", "pumpkin", "spaghetti", "lettuce"];
-//var words = ["test word"];
+//var words = ["cookie", "bacon", "pancake", "lima bean", "toast", "feta cheese", "pumpkin", "spaghetti", "lettuce"];
+var words = ["test word", "bacon"];
 
 let wordToSolve;
 
 function setupAndChooseWord() {
+    wordToSolveArray = [];
     for (i = 0; i < words.length; i++) {
         wordToSolveArray.push(new Word(words[i]));
     }
@@ -21,6 +22,7 @@ function setupAndChooseWord() {
 
 function initialize() {
     guessCount = 9;
+
     wordToSolve.letterArrayMaker();
     // have to put this outside of mainGame or the arraymaker will keep pushing the whole thing to an array again
 }

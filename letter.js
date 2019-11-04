@@ -23,6 +23,9 @@ var Letter = function(character) {
             this.correct = true;
             //console.log("Letter Guessed Correctly");
         }
+        else if (this.character === " ") {
+            this.correct = true;
+        }
         else {
             //console.log("Letter guessed Incorrectly");
         }

@@ -11,7 +11,7 @@ var Word = function(theWordItself) {
         for (j = 0; j < this.preLetterObjectArray.length; j++) {
             let thisLetter = this.preLetterObjectArray[j];
             if (thisLetter === " ") {
-                this.letterObjectArray.push(" ");
+                this.letterObjectArray.push(new Letter(" "));
             }
             else {
                 this.letterObjectArray.push(new Letter(thisLetter));
