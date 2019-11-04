@@ -10,7 +10,13 @@ var Word = function(theWordItself) {
 
         for (j = 0; j < this.preLetterObjectArray.length; j++) {
             let thisLetter = this.preLetterObjectArray[j];
-            this.letterObjectArray.push(new Letter(thisLetter));
+            if (thisLetter === " ") {
+                this.letterObjectArray.push(" ");
+            }
+            else {
+                this.letterObjectArray.push(new Letter(thisLetter));
+            }
+            
         }
         
     };
@@ -25,13 +31,27 @@ var Word = function(theWordItself) {
             letterObjectArrayChecked.push(this.letterObjectArray[i].toString());
         }   // since I switched the functions in letter.js to return rather than console log, letterObjectArrayChecked pushes the returned result
         stringForDisplay = letterObjectArrayChecked.join(" ");
-        console.log(stringForDisplay);
+        console.log("\n" + stringForDisplay + "\n");
     }
 
     this.checkString = function(letterGuess) {
-        for (k = 0; k < this.letterObjectArray.length; k++) {
-        this.letterObjectArray[k].check(letterGuess);
+        const isThereASpace = this.letterObjectArray.indexOf(" ");
+        // if there is an index that is returned, where " " is found, then:
+        if (isThereASpace != -1) {
+            // remove the " " by using the index we found above, 1 specifies removing 1 element
+            let temporaryArray = this.letterObjectArray; 
+            temporaryArray.splice(isThereASpace, 1);
+
+            for (l = 0; l < temporaryArray.length; l++) {
+                temporaryArray[l].check(letterGuess);
+            }
         }
+        else {
+            for (k = 0; k < this.letterObjectArray.length; k++) {
+                this.letterObjectArray[k].check(letterGuess);
+            }
+        }
+        
     }
 }
 

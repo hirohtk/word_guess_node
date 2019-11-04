@@ -30,19 +30,5 @@ var Letter = function(character) {
      
   };
 
-/*  function test(letterGuess) {
-    var a = new Letter("a", letterGuess);
-    var b = new Letter("b", letterGuess);
-    var c = new Letter("c", letterGuess);
-    var d = new Letter("d", letterGuess);
-    var e = new Letter("e", letterGuess);
-    a.check();
-    a.display();
-}
-
-test(letterChosen);
-   */
-
-  // Exporting our Letter constructor. We will require it in movie.js
 module.exports = Letter;
   
