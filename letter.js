@@ -13,6 +13,11 @@ var Letter = function(character) {
             //console.log(character);
             return character;
         }
+        else if (this.character === " ") {
+            return " ";
+            //this makes it so a blank space always displays a blank space (it's not subject to being a letter(character) or 
+            //an underscore).  
+        }
         else {
              //console.log("_");
              return "_";
@@ -25,7 +30,7 @@ var Letter = function(character) {
         }
         else if (this.character === " ") {
             this.correct = true;
-        }
+        }// Doing this so that all Letter objects that have spaces render true for the space.  space itself is now a Letter object
         else {
             //console.log("Letter guessed Incorrectly");
         }

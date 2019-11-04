@@ -12,7 +12,7 @@ var Word = function(theWordItself) {
             let thisLetter = this.preLetterObjectArray[j];
             if (thisLetter === " ") {
                 this.letterObjectArray.push(new Letter(" "));
-            }
+            }   //I seem to be able to do this, making a new letter object named " "
             else {
                 this.letterObjectArray.push(new Letter(thisLetter));
             }   
@@ -33,7 +33,11 @@ var Word = function(theWordItself) {
     }
 
     this.checkString = function(letterGuess) {
-        const isThereASpace = this.letterObjectArray.indexOf(" ");
+
+        //BELOW WAS ATTEMPT AT CHECKING EVERYTHING EXCEPT SPACES.  BUT I JUST SET SPACE TO ALWAYS BE "CORRECT" and that solved the problem.
+        //FOR THREE WORD OPTIONS THE BELOW WOULDNT HAVE WORKED (I ONLY SEPARATE CHECKING IN ONE SPOT)
+
+        /*const isThereASpace = this.letterObjectArray.indexOf(" ");
         // if there is an index that is returned, where " " is found, then:
         if (isThereASpace != -1) {
             // remove the " " by using the index we found above, 1 specifies removing 1 element
@@ -44,20 +48,13 @@ var Word = function(theWordItself) {
             for (var b = isThereASpace + 1; b < this.letterObjectArray.length; b++) {
                 this.letterObjectArray[b].check(letterGuess);
             }
-
-            /*
-            let temporaryArray = this.letterObjectArray; 
-            temporaryArray.splice(isThereASpace, 1);
-            for (l = 0; l < temporaryArray.length; l++) {
-                temporaryArray[l].check(letterGuess);
-            }
-            */
         }
-        else {
+        else {*/
+
             for (k = 0; k < this.letterObjectArray.length; k++) {
                 this.letterObjectArray[k].check(letterGuess);
             }
-        }
+        
         
     }
 }

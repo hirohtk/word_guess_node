@@ -5,8 +5,26 @@ let guessCount;
 
 //wordToSolveArray holds your Word Constructors
 var wordToSolveArray = [];
-//var words = ["cookie", "bacon", "pancake", "lima bean", "toast", "feta cheese", "pumpkin", "spaghetti", "lettuce"];
-var words = ["test word", "bacon"];
+/*var words = ["cookie", 
+"bacon", 
+"pancake", 
+"lima bean", 
+"toast", 
+"feta cheese", 
+"pumpkin", 
+"spaghetti", 
+"chocolate chip cookie", 
+"french toast",
+];*/
+var words = ["vanilla",
+"mint chocolate chip",
+"cookies and cream",
+"strawberry",
+"chocolate",
+"rocky road",
+"caramel",
+"cookie dough",
+"neapolitan"];
 
 let wordToSolve;
 
@@ -19,10 +37,16 @@ function setupAndChooseWord() {
     wordToSolve = wordToSolveArray[randomNumberToIdentify];
 }
 
-
 function initialize() {
-    guessCount = 9;
-
+    if (wordToSolve.length <= 6) {
+        guessCount = 10;
+    }
+    else if (wordToSolve.length > 6 && wordToSolve.length <= 12) {
+        guessCount = 13;
+    }
+    else {
+        guessCount = 18;
+    }
     wordToSolve.letterArrayMaker();
     // have to put this outside of mainGame or the arraymaker will keep pushing the whole thing to an array again
 }
@@ -37,17 +61,25 @@ function mainGame() {
             message: "Guess a Letter!"
         }
     ]).then(function (answers) {
-        if (guessCount < 1) {
-            console.log("Game Over!  Please reload the program to try again.")
+        
+        if (answers.letter.length === 1) {
+            if (guessCount < 1) {
+                console.log("Game Over!  Please reload the program to try again.")
+            }
+            else {
+                let guess = answers.letter;
+                wordToSolve.checkString(guess);
+                //wordToSolve.fillIn()
+                guessCount--;
+                console.log("\nYou have " + guessCount + " guesses remaining.")
+                checkWin();
+            }
         }
         else {
-            let guess = answers.letter;
-            wordToSolve.checkString(guess);
-            //wordToSolve.fillIn()
-            guessCount--;
-            console.log("\nYou have " + guessCount + " guesses remaining.")
-            checkWin();
+            console.log("Error: please make a guess, or make sure your guess is only one letter long.")
+            mainGame();
         }
+        
     });
 }
 
@@ -66,7 +98,7 @@ function checkWin() {
     //below:  meaning, if the every test is passed, then: 
     if (result) {
         wordToSolve.fillIn();
-        console.log("Winner!  You guessed the word correctly.  Onto the next word!")
+        console.log("Winner!  You guessed the word correctly.  On to the next word!")
         setupAndChooseWord();
         initialize(); 
         mainGame();  
