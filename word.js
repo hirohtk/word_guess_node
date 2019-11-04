@@ -1,12 +1,9 @@
 var Letter = require("./letter");
 
+
 var Word = function(theWordItself) {
     this.preLetterObjectArray = theWordItself.split("");
     this.letterObjectArray = [];
-
-    this.test = function () {
-        console.log(this.preLetterObjectArray);
-    }
 
     //pushing new letter object for each of the letters that are gotten from the actual letter itself 
     this.letterArrayMaker = function () {
@@ -15,33 +12,36 @@ var Word = function(theWordItself) {
             let thisLetter = this.preLetterObjectArray[j];
             this.letterObjectArray.push(new Letter(thisLetter));
         }
-        //console.log(this.letterObjectArray);
+        
     };
     // this is supposed to draw the entire guess line with underscores and actual letters guessed.
     // will update every time a new letter is input (checks, then draws);
     this.fillIn = function () {
-        //console.log(this.letterObjectArray);
-        for (i = 0; i < this.letterObjectArray.length; i++) {
-            //this.letterObjectArray[i].toString();
-            
-            console.log(this.letterObjectArray[i].toString());
-            
-        }// still calling the object for some reason
         
+        let letterObjectArrayChecked = [];
+        let stringForDisplay;
+        for (i = 0; i < this.letterObjectArray.length; i++) {
+            
+            letterObjectArrayChecked.push(this.letterObjectArray[i].toString());
+        }   // since I switched the functions in letter.js to return rather than console log, letterObjectArrayChecked pushes the returned result
+        stringForDisplay = letterObjectArrayChecked.join(" ");
+        console.log(stringForDisplay);
     }
 
     this.checkString = function(letterGuess) {
-        for (i = 0; i < this.letterArray.length; i++) {
-        this.letterArray[i].check(letterGuess);
+        for (k = 0; k < this.letterObjectArray.length; k++) {
+        this.letterObjectArray[k].check(letterGuess);
         }
     }
-
 }
 
+module.exports = Word;
 
+// this should go in Index.js
+/*
 var cheetos = new Word("cheetos");
 
-
-cheetos.test();
 cheetos.letterArrayMaker();
+cheetos.checkString("e");
 cheetos.fillIn();
+*/

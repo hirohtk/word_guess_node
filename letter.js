@@ -10,21 +10,21 @@ var Letter = function(character) {
     this.correct = false;
     this.toString = function () {
         if (this.correct) {
-            console.log(character);
+            //console.log(character);
             return character;
         }
         else {
-             console.log("_");
+             //console.log("_");
              return "_";
         }
     }
     this.check = function (inputArg) {
         if (this.character === inputArg) {
             this.correct = true;
-            console.log("Letter Guessed Correctly");
+            //console.log("Letter Guessed Correctly");
         }
         else {
-            console.log("Letter guessed Incorrectly");
+            //console.log("Letter guessed Incorrectly");
         }
     }
      
