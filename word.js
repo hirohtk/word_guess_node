@@ -15,10 +15,8 @@ var Word = function(theWordItself) {
             }
             else {
                 this.letterObjectArray.push(new Letter(thisLetter));
-            }
-            
+            }   
         }
-        
     };
     // this is supposed to draw the entire guess line with underscores and actual letters guessed.
     // will update every time a new letter is input (checks, then draws);
@@ -39,12 +37,21 @@ var Word = function(theWordItself) {
         // if there is an index that is returned, where " " is found, then:
         if (isThereASpace != -1) {
             // remove the " " by using the index we found above, 1 specifies removing 1 element
+
+            for (var a = 0; a < isThereASpace; a++) {
+                this.letterObjectArray[a].check(letterGuess);
+            }
+            for (var b = isThereASpace + 1; b < this.letterObjectArray.length; b++) {
+                this.letterObjectArray[b].check(letterGuess);
+            }
+
+            /*
             let temporaryArray = this.letterObjectArray; 
             temporaryArray.splice(isThereASpace, 1);
-
             for (l = 0; l < temporaryArray.length; l++) {
                 temporaryArray[l].check(letterGuess);
             }
+            */
         }
         else {
             for (k = 0; k < this.letterObjectArray.length; k++) {
